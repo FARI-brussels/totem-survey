@@ -1,20 +1,20 @@
 <template>
   <div class="layout">
-    <FLanguageSelector @update:locale="setLocale" />
-
-    <div class="content">
-      <slot name="content"></slot>
+    <!-- <FFooter class="footer" /> -->
+    <div class="heading">
+      <slot name="title" />
     </div>
 
-    <FFooter class="footer" />
+    <div class="content">
+      <slot name="content" />
+    </div>
+    <div class="actions">
+      <slot name="actions" />
+    </div>
   </div>
 </template>
-
 <script setup lang="ts">
-import { FFooter, FLanguageSelector } from 'fari-component-library'
-import { useSurveyStore } from '@/stores/survey'
-
-const { setLocale } = useSurveyStore()
+import { FFooter } from 'fari-component-library'
 </script>
 <style scoped lang="scss">
 .layout {
@@ -28,21 +28,28 @@ const { setLocale } = useSurveyStore()
   background-image: radial-gradient(circle, rgb(75 118 212) 0%, rgb(24, 62, 145) 70%);
 }
 
-.content {
+.heading {
+  position: absolute;
+  top: 8rem;
   width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rem;
+  text-align: center;
+  gap: 2rem;
 }
 
-:deep(.language-selector) {
-  color: white;
-}
-
-:deep(.selected) {
-  color: #4393de;
+.content {
+  position: absolute;
+  top: 40rem;
+  width: 100%;
+  height: 60rem;
 }
 
 .footer {
   position: absolute;
-  bottom: 2rem;
+  top: 2rem;
+  // bottom: 2rem;
 }
 </style>

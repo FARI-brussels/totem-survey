@@ -1,20 +1,23 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
-import {
-  StartScreen,
-  SurveySelect,
-  DemoTour
-  // DataWalk,
-  // InitiationWorkshop,
-  // BlindspotsWorkshop
-} from '@/views'
+import { StartScreen, SurveySelect, DemoTour, LanguageSelect } from '@/views'
 
 const routes = [
-  { path: '/start-page', component: StartScreen, alias: '/', name: 'start-page' },
+  {
+    path: '/start-page',
+    component: StartScreen,
+    alias: '/',
+    name: 'start-page',
+    meta: { transition: 'slide-right' }
+  },
+  {
+    path: '/select-language',
+    component: LanguageSelect,
+    alias: '/',
+    name: 'select-language',
+    meta: { transition: 'slide-right' }
+  },
   { path: '/select-survey', component: SurveySelect, name: 'select-survey' },
   { path: '/demo-tour', component: DemoTour, name: 'demo-tour' }
-  // { path: '/data-walk', component: DataWalk, name: 'data-walk' },
-  // { path: '/initiation-workshop', component: InitiationWorkshop },
-  // { path: '/blindspots-workshop', component: BlindspotsWorkshop }
 ]
 
 const router = createRouter({

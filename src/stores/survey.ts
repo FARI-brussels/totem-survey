@@ -7,6 +7,17 @@ export const useSurveyStore = defineStore('survey', {
     error: null as any,
     loading: false,
     locale: 'en',
+    userSelectedLocale: false,
+    surveyTitle: {
+      nl: '',
+      'fr-FR': '',
+      en: ''
+    },
+    surveySubTitle: {
+      nl: '',
+      'fr-FR': '',
+      en: ''
+    },
     pageData: {
       title: {},
       subtitle: {},
@@ -36,8 +47,14 @@ export const useSurveyStore = defineStore('survey', {
       }
     },
     setLocale(locale: Locale): any {
-      console.log(locale)
       this.locale = locale
+      this.userSelectedLocale = true
+    },
+    setSurveyTitle(value: { [K in Locale]: string }) {
+      this.surveyTitle = value
+    },
+    setSurveySubTitle(value: { [K in Locale]: string }) {
+      this.surveySubTitle = value
     }
   }
 })

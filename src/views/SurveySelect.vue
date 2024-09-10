@@ -1,8 +1,5 @@
 <template>
   <div class="wrapper">
-    <h1 v-if="pageData?.title[locale]" class="title font-size-subtitle font-weight-extrabold">
-      {{ pageData.title[locale] }}
-    </h1>
     <div class="survey-items-container">
       <FContainer v-for="{ title, slug } in pageData.surveys" :key="title" class="survey-item">
         <h2 class="color-primary font-weight-extrabold font-size-subtitle">
@@ -22,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { FContainer, FCardActions, FButton } from 'fari-component-library'
+import { FContainer, FCardActions, FButton, FTitle } from 'fari-component-library'
 import { useSurveyStore } from '@/stores/survey'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
@@ -44,24 +41,18 @@ const buttonLabel = {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-}
-
-.title {
-  position: absolute;
-  top: 16rem;
-  left: 30%;
+  padding-bottom: 10rem;
 }
 
 .survey-items-container {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: auto 0;
+  justify-content: flex-start;
 }
 
 .survey-item {
